@@ -69,7 +69,7 @@ Languages that computers program use to communicate with one another (usually ov
 - Client asks for a resource
 - Server sends back a response with the corresponding resource
 
-![Client-Server Communication](./client-server.png)
+![Client-Server Communication](./client-server-web.png)
 
 #### Other Type of Communication
 
