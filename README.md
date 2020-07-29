@@ -2,19 +2,34 @@
 
 ## Content
 
-- What is networking? (Quick review)
-- TCP introduction (and demo)
+- What is networking?
+- TCP introduction 
 - HTTP Fundamentals
-- Its request & response nature
-- How it leverages TCP
-- Most important parts of a request
-- Common status codes such as 200, 302, 404, and 500
-- Simple node HTTP Client example (using request)
 
+## Question: What is the Internet?
+
+- [Internet Model](./internet-network.png)
+
+- The Internet relies on the TCP/IP protocol
 
 ## TCP
 
-#### TCP
+### An analogy: our mail system
+
+(a) Writing a letter to somebody:
+  - you put the letter in an enveloppe
+  - you put the address on it
+  - send it through the mail
+  - the recipient receives the letter
+
+(b) Writing a letter to somebody:
+  - cutting your letter in 5 pieces
+  - each part is inserted into its own enveloppe with the same address
+  - send each enveloppe through the mail
+  - the recipient needs to wait until all the enveloppes are received
+  - the recipient can put together all the pieces to have the full letter
+
+### TCP
 
 - Transmisson Control Protocol
 - Messages are broken down into packets and travel over the network to be reassemble
@@ -26,7 +41,7 @@
 - Each packet travels through the network independantly
 - Packets are reassemble into a full message when reaching destination
 
-#### IP
+### IP
 
 - Internet Protocol
 - Address that identifies a computer on the network
@@ -36,7 +51,40 @@
 
 ### TCP Demo
 
-- Well create a small chat app with the `net` api of node.
+- We'll create a small chat app with the `net` api of node.
+- We need a client `(client.js)` and a server `(server.js)`
+
+#### Overview
+
+##### What should our server.js do
+
+- creates a tcp server
+- listen for connection
+- on receipt of a new connection, sends the connected client a welcome message
+then listen for any data subsequently sent through that connection
+- on receipt of any data, broadcast that data to all currently connected clients
+
+##### What should our client.js do
+
+- create a tcp connection to our server
+with port and host
+- it set it's encoding i.e. how the it interprets server's messages
+- When connected, console.log('your connected')
+- Whenever it receives (data) message from server, it should display that message to console
+- Whenever we type something to console, it should send what we typed to the server
+
+#### Events in JS
+
+- could be: an input from a user, (lots of events in the browser), stdin data
+
+- Events are actions or occurrences that happen in the system you are programming, which the system tells you about so you can respond to them as needed.
+
+- The system will give a signal when an event occurs, so that the appropriate response (that is, a callback function) is taken.
+
+- Events are Asynchronous
+  - An Event Handler is a callback function that will be called when an event is triggered.
+
+
 
 ### Protocols on Top of TCP/IP
 
@@ -209,10 +257,6 @@ Expect-CT: max-age=604800, report-uri="https://report-uri.cloudflare.com/cdn-cgi
 Server: cloudflare
 CF-RAY: 4989863fde7fab90-YYZ
 ```
-
-### Demo with the request package
-
-- we'll use the request package to query an API
 
 ## References
 
