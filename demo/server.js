@@ -58,11 +58,14 @@ server.on('connection', (client) => {
 
   client.on('error', (err) => console.log(err.message));
 
+
   client.on('close', () => {
     // Todo: I would need to delete the client from connectedClients.
     // could use filter function to do that..
 
-    console.log('client has disconnected')
+    console.log('client has disconnected');
+  });
+
 });
 
 // server needs to listen for incoming requests

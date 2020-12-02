@@ -9,15 +9,14 @@ const client = net.createConnection({
   host: remoteHost,
 });
 
-// todo
-// catch the input from the keyboard and send what's typed to server.
-// process.stdin.on('data)...
-
-
 
 // set the conding to utf8
-
 client.setEncoding('utf8');
+
+// catch the input from the keyboard and send what's typed to server.
+process.stdin.on('data', (input) => {
+  client.write(input);
+});
 
 // this is happening when the client established a connection to the server
 client.on('connect', () => {
